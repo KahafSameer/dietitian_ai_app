@@ -1,0 +1,73 @@
+<!--
+Purpose: Landing page to collect user inputs and trigger AI recommendations
+Notes:
+- Posts form data to /recommend
+- Links static assets from /static/
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dietitian AI App</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="/static/logo.png" alt="App Logo" />
+        <h1>Dietitian AI</h1>
+      </div>
+
+      <div class="card">
+        <h2>Enter your details</h2>
+        <p class="notice">Your data stays local during this demo; avoid sharing sensitive information.</p>
+
+        <form id="diet-form" method="post" action="/recommend" onsubmit="return validateInputs()">
+          <div class="grid">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="1" step="1" placeholder="e.g., 30" required />
+
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" required>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+
+            <label for="weight">Weight (kg)</label>
+            <input id="weight" name="weight" type="number" min="1" step="0.1" placeholder="e.g., 70.5" required />
+
+            <label for="height">Height (cm)</label>
+            <input id="height" name="height" type="number" min="1" step="0.1" placeholder="e.g., 175" required />
+
+            <label for="activity">Activity Level</label>
+            <select id="activity" name="activity" required>
+              <option value="sedentary">Sedentary</option>
+              <option value="light">Lightly active</option>
+              <option value="moderate">Moderately active</option>
+              <option value="active">Active</option>
+              <option value="very_active">Very active</option>
+            </select>
+
+            <label for="goal">Goal</label>
+            <select id="goal" name="goal" required>
+              <option value="lose">Lose weight</option>
+              <option value="maintain">Maintain</option>
+              <option value="gain">Gain weight</option>
+            </select>
+
+            <label for="language">Language (optional)</label>
+            <input id="language" name="language" type="text" placeholder="e.g., en, es, fr, ar" />
+          </div>
+
+          <div id="form-error" class="error" aria-live="polite"></div>
+
+          <button type="submit">Get Recommendations</button>
+          <span id="loading-text" class="notice" hidden>Generating personalized recommendations...</span>
+        </form>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>

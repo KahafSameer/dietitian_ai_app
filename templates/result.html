@@ -1,0 +1,46 @@
+<!--
+Purpose: Results page to display computed metrics and AI-generated diet plan
+Assumes server renders with variables: bmi, bmr, calories, plan, translated_plan
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dietitian AI — Results</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img src="/static/logo.png" alt="App Logo" />
+        <h1>Your Personalized Plan</h1>
+      </div>
+
+      <div class="card">
+        <h2>Key metrics</h2>
+        <table class="table">
+          <tr><th>BMI</th><td>{{ bmi }}</td></tr>
+          <tr><th>BMR (kcal/day)</th><td>{{ bmr }}</td></tr>
+          <tr><th>Daily Calorie Target (kcal)</th><td>{{ calories }}</td></tr>
+        </table>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <h2>Dietary recommendation</h2>
+        <pre style="white-space:pre-wrap;">{{ plan }}</pre>
+      </div>
+
+      {% if translated_plan %}
+      <div class="card" style="margin-top:1rem;">
+        <h2>Translated recommendation</h2>
+        <pre style="white-space:pre-wrap;">{{ translated_plan }}</pre>
+      </div>
+      {% endif %}
+
+      <p style="margin-top:1rem;">
+        <a href="/" class="button secondary">Back</a>
+      </p>
+    </div>
+  </body>
+</html>

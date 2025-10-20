@@ -1,0 +1,3 @@
+# Placeholder dataset for diet recommendations mapping
+# Columns can include: condition, bmi_min, bmi_max, macronutrient_ratio, notes
+condition,bmi_min,bmi_max,macros,notes
